@@ -1,5 +1,3 @@
-<button onclick="register()">완료</button>
-
 function register() {
     const id = document.querySelector('.id').value;
     const pw = document.querySelector('.pw').value;
