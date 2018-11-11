@@ -11,3 +11,17 @@ app.use('/auth', require('./auth'));
 // api동작시키기 위한 구문
 app.listen(port); // port로 서버 열기
 console.log('start server with 8888!');
+
+const cookieParser = require('cookie-parser');
+const Token = require('./token');
+
+app.use(cookieParser());
+app.use(Token.checkToken);
+
+app.get('/testAPI', (req, res)) => {
+    res.json({
+        data:{
+            message: 'API 테스트 성공',
+        }
+    });
+};
