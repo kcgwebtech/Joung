@@ -12,8 +12,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
     "forever": "^0.15.3",
+    "jsonwebtoken": "^8.3.0",
     "mysql2": "^1.6.1",
     "sequelize": "^4.41.0"
   }
