@@ -18,10 +18,10 @@ const Token = require('./token');
 app.use(cookieParser());
 app.use(Token.checkToken);
 
-app.get('/testAPI', (req, res)) => {
+app.get('/testAPI', (req, res) => {
     res.json({
         data:{
             message: 'API 테스트 성공',
         }
     });
-};
+});
