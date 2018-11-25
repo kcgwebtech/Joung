@@ -2,6 +2,8 @@ const loginBtn = document.querySelector('.login__btn');
 const logoutBtn = document.querySelector('.logout__btn');
 const registerBtn = document.querySelector('.register__btn');
 const welcomeMsg = document.querySelector('.welcome__message');
+const boardList = document.querySelector('.board__list');
+
 
 // 페이지 로드시 실행되는 이벤트 함수
 window.onload = function() {
@@ -20,6 +22,8 @@ window.onload = function() {
 
         welcomeMsg.textContent = userId + '님 환영합니다.';
     }
+
+    loadBoards();
 };
 
 // 저장된 쿠키를 가져오는 함수
@@ -55,4 +59,25 @@ function logout() {
     request.onload = function() {
         window.location.href = '/';
     }
+}
+
+function loadBoards() {
+    const request = new XMLHttpRequest();
+    request.open('GET', '/api/boards', true);
+    request.send();
+
+    request.onload = function() {
+        const boards = JSON.parse(request.response).data;
+        let boardListHTML = '';
+
+        for (let i = 0, len = boards.length; i < len; i += 1) {
+            const board = boards[i];
+            const id = board.id;
+            const title = board.title;
+
+            boardListHTML += '<li><a href="/board?id=' + id + '">' + title + '</a></li>';
+        }
+
+        boardList.innerHTML = boardListHTML;
+    };
 }
