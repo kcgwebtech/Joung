@@ -16,7 +16,7 @@ const cookieParser = require('cookie-parser');
 const Token = require('./token');
 
 app.use(cookieParser());
-app.use('/boards', requires('./boards'));
+app.use('/boards', require('./boards'));
 
 app.get('/testAPI', (req, res) => {
     res.json({
